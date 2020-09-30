@@ -1,11 +1,15 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {View, Text, FlatList, Alert} from 'react-native';
 import {ListItem, Button, Icon} from 'react-native-elements';
-
 import users from '../mock_data/users';
+
+import UsersContext from '../context/UsersContext';
 
 export default (props) => {
   // console.warn(Object.keys(props)); - Verficando as chaves que vem no objeto de props.
+
+  const {state} = useContext(UsersContext);
+  console.warn(Object.keys(state));
 
   function confirmUserDeletion(user) {
     Alert.alert('Delete User', 'Confirm User Deletion ?', [
@@ -55,7 +59,7 @@ export default (props) => {
     <View>
       <FlatList
         keyExtractor={(user) => user.id.toString()} // definindo chave para cada elemento
-        data={users} //de onde estou pegando os dados dessa lista
+        data={state.users} //de onde estou pegando os dados dessa lista
         renderItem={getUserItem}
       />
     </View>
