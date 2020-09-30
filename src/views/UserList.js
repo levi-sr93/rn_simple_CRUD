@@ -16,7 +16,7 @@ export default (props) => {
         },
       },
       {
-        text: 'No',
+        text: 'Cancel',
       },
     ]);
   }
