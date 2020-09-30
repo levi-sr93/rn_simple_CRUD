@@ -8,7 +8,7 @@ import UsersContext from '../context/UsersContext';
 export default (props) => {
   // console.warn(Object.keys(props)); - Verficando as chaves que vem no objeto de props.
 
-  const {state} = useContext(UsersContext);
+  const {state, dispatch} = useContext(UsersContext);
   console.warn(Object.keys(state));
 
   function confirmUserDeletion(user) {
@@ -16,7 +16,11 @@ export default (props) => {
       {
         text: 'Yes',
         onPress() {
-          console.warn('Deleting...' + user.id);
+          // console.warn('Deleting...' + user.id);
+          dispatch({
+            type: 'DELETE_USER',
+            payload: user,
+          });
         },
       },
       {
